@@ -1,4 +1,4 @@
-pipeline {
+node {
   try {
     stage('checkout') {
       checkout scm
