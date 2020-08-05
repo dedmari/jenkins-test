@@ -9,8 +9,8 @@ node {
     stage('compile') {
       echo "nothing to compile for hello.sh..."
     }
-    stage('test') {
-      sh "./test_hello.sh"
+    stage('kfpTest') {
+      sh "python3 kfpTest.py"
     }
     stage('package') {
       sh "tar -cvzf hello.tar.gz hello.sh"
