@@ -9,11 +9,11 @@ node {
     stage('compile') {
       echo "nothing to compile for hello.sh..."
     }
-    stage('kfpTest') {
+    stage('kfpListExepriments') {
       sh "python3.6 kfpTest.py"
     }
-    stage('package') {
-      sh "tar -cvzf hello.tar.gz hello.sh"
+    stage('kfpRunPipeline') {
+      sh "python3.6 kfp_run_pipeline.py"
     }
     stage('publish') {
       echo "uploading package..."
