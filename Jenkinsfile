@@ -6,17 +6,25 @@ node {
     stage('prepare') {
       sh "git clean -fdx"
     }
-    stage('compile') {
-      echo "nothing to compile for hello.sh..."
+    stage('branchName') {
+      echo "branch name " + env.BRANCH_NAME
     }
-    stage('kfpListExepriments') {
-      sh "python3.6 kfpTest.py"
+    stage('training') {
+      if (env.BRANCH_NAME.startsWith("ds_task")) {
+        echo "Some automated code tests..."
+      }
+
+      else if (env.BRANCH_NAME.startsWith("training")) {
+        echo "start training in Kubeflow pipeline..."
+        sh "python3.6 kfpTest.py"
+      }
+
     }
     stage('kfpRunPipeline') {
       sh "python3.6 kfp_run_pipeline.py"
     }
-    stage('publish') {
-      echo "uploading package..."
+    stage('deploy') {
+      echo "stage2: deploy model in production..."
     }
   } finally {
     stage('cleanup') {
