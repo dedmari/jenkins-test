@@ -9,19 +9,22 @@ node {
     stage('branchName') {
       echo "branch name " + env.BRANCH_NAME
     }
-    stage('training') {
+    stage('buildEnv') {
       if (env.BRANCH_NAME.startsWith("ds_task")) {
         echo "Some automated code tests..."
       }
 
       else if (env.BRANCH_NAME.startsWith("training")) {
-        echo "start training in Kubeflow pipeline..."
+        echo "compose and push images to docker repo for KF pipeline componenets..."
         sh "python3.6 kfpTest.py"
       }
 
     }
     stage('kfpRunPipeline') {
-      sh "python3.6 kfp_run_pipeline.py"
+      if (env.BRANCH_NAME.startsWith("training")) {
+        echo "starting training in Kubeflow pipeline"
+        sh "python3.6 kfp_run_pipeline.py"
+      }
     }
     stage('deploy') {
       echo "stage2: deploy model in production..."
