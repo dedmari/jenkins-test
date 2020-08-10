@@ -7,4 +7,4 @@ run_name = 'testjenkinsrunpikfp'
 client = kfp.Client()
 
 run = client.run_pipeline(experiment_id = experiment_id, pipeline_id = pipeline_id, job_name = run_name)
-print(‘Run link: %s/#/runs/details/%s’ % (client._get_url_prefix(), run.id))
+print('Run link: %s/#/runs/details/%s' % (client._get_url_prefix(), run.id))
