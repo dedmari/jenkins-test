@@ -25,7 +25,7 @@ node {
         /* Using DockerHub as docker registry. You need to registry before you can push imgaed to your account. */
         /* Arguments for docker.Registry: Registry URL followed by Credential(e.g. docker_hub) stored on Jenkins server */ 
         docker.withRegistry('https://registry.hub.docker.com', 'docker_hub')
-        component1.push("$(env.BUILD_NUMBER)")
+        component1.push("${env.BUILD_NUMBER}")
         component.push("latest")
       }
     }
