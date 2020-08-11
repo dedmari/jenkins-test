@@ -9,6 +9,9 @@ node {
     stage('branchName') {
       echo "branch name " + env.BRANCH_NAME
     }
+    stage('Docker Version') {
+      sh "docker --version"
+    }
     stage('Build Images') {
       if (env.BRANCH_NAME.startsWith("ds_task")) {
         echo "Some automated code tests..."
