@@ -9,8 +9,8 @@ node {
     stage('branchName') {
       echo "branch name " + env.BRANCH_NAME
     }
-    stage('Docker Version') {
-      sh "docker --version"
+    stage('Docker Test') {
+      sh "docker build -t muneer7589/testjenkinsbuild -f ${env.WORKSPACE}/components/dockerTest/Dockerfile ."
     }
     stage('Build Images') {
       if (env.BRANCH_NAME.startsWith("ds_task")) {
