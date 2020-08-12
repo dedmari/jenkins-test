@@ -15,6 +15,7 @@ with open('./config/pipeline.json') as pipeline_config:
   data = json.load(pipeline_config)
   pipeline_run_params = data['pipeline_run_params']
  
+print("pipeline_run_params" + str(pipeline_run_params))
 
 client = kfp.Client()
 
