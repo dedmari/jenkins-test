@@ -11,7 +11,7 @@ with open('./config/kubeflow.json') as kf_config:
   kubeflow_host =  data['kubeflow'][0]['host']
 
 pipeline_run_params = {}
-with open('./config/pipeline.json') as pipeline_config):
+with open('./config/pipeline.json') as pipeline_config:
   data = json.load(pipeline_config)
   pipeline_run_params = data['pipeline_run_params']
  
