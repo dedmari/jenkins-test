@@ -21,3 +21,7 @@ client = kfp.Client()
 
 run = client.run_pipeline(experiment_id = experiment_id, pipeline_id = pipeline_id, job_name = run_name, params = pipeline_run_params)
 print('Run link: %s%s/#/runs/details/%s' % (kubeflow_host, client._get_url_prefix(), run.id))
+
+with open('recent_run_id.txt', 'w') as run_id:
+  run_id.write(run.id)
+
