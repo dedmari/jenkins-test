@@ -7,6 +7,8 @@ with open('recent_run_id.txt') as run:
 os.remove('recent_run_id.txt')
 
 client = kfp.Client()
-print(client.wait_for_run_completion(run_id = run_id, timeout = 5000))
+client.wait_for_run_completion(run_id = run_id, timeout = 5000)
+
+print(run_id)
 
 
