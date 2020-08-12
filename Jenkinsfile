@@ -32,8 +32,10 @@ node {
     }
     stage('kfpRunPipeline') {
       if (env.BRANCH_NAME.startsWith("training")) {
-        echo "starting training in Kubeflow pipeline"
         sh "python3.6 kfp_run_pipeline.py"
+        office365ConnectorSend webhookUrl: 'https://outlook.office.com/webhook/8ff9afd3-5134-49a0-8dca-be6884951125@4b0911a0-929b-4715-944b-c03745165b3a/JenkinsCI/6d2b6238d4b74f6ba1541496b8aad9ab/02438fa1-3250-4de7-a462-8238a6e99ca9',
+            message: 'Training  has been [triggered](https://www.google.com)',
+            status: 'Success' 
       }
     }
     stage('deploy') {
