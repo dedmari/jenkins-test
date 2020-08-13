@@ -46,6 +46,7 @@ if __name__ == "__main__":
     import kfp
     import kfp.compiler as compiler
     
+    print("kfp version" + str(kfp.__version__))
     pipeline_file_name = "kfp_vol_upload.tar.gz"
     compiler.Compiler().compile(volume_op_dag, pipeline_file_name )
 
