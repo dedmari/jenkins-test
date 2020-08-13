@@ -43,7 +43,7 @@ if __name__ == "__main__":
     import kfp
     import kfp.compiler as compiler
     
-    pipeline_file_name =  __file__ + ".tar.gz"
+    pipeline_file_name = "kfp_vol_upload.tar.gz"
     compiler.Compiler().compile(volume_op_dag, pipeline_file_name )
 
     client = kfp.Client()
