@@ -51,6 +51,8 @@ if __name__ == "__main__":
     compiler.Compiler().compile(volume_op_dag, pipeline_file_name )
 
     client = kfp.Client()
-    client.upload_pipeline(pipeline_package_path = pipeline_file_name)
-    os.remove(pipeline_file_name)
+    try:
+      client.upload_pipeline(pipeline_package_path = pipeline_file_name)
+    finally:
+      os.remove(pipeline_file_name)
     
