@@ -11,7 +11,7 @@ node {
     }
     stage('kfp Volume Pipeline Upload') {
       if (env.BRANCH_NAME.startsWith("training")) {
-        sh "python3.7 kfp_vol_pipeline_test.py"
+        sh "python3.6 kfp_vol_pipeline_test.py"
       }
     }
     stage('deploy') {
