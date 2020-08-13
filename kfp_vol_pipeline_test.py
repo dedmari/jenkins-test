@@ -5,11 +5,14 @@ import kfp.dsl as dsl
     name="Volume Op DAG",
     description="The second example of the design doc."
 )
-def volume_op_dag():
+def volume_op_dag(
+    pvc_name = "kfp-triggered-pvc",
+    volume_size = "10Gi"
+):
     vop = dsl.VolumeOp(
-        name="create_pvc",
-        resource_name="kfp-triggered-pvc",
-        size="10Gi",
+        name = "create_pvc",
+        resource_name = pvc_name,
+        size = volume_size,
         modes=dsl.VOLUME_MODE_RWM
     )
 
