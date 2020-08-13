@@ -53,6 +53,8 @@ if __name__ == "__main__":
     client = kfp.Client()
     try:
       client.upload_pipeline(pipeline_package_path = pipeline_file_name)
+    except:
+      print("kfp client is having a bug and throws error due to unix timestamp. For now we are using except block to surpress this error.")
     finally:
       os.remove(pipeline_file_name)
     
