@@ -45,6 +45,8 @@ if __name__ == "__main__":
     
     pipeline_file_name =  __file__ + ".tar.gz"
     compiler.Compiler().compile(volume_op_dag, pipeline_file_name )
+
+    client = kfp.Client()
     client.upload_pipeline(pipeline_package_path = pipeline_file_name)
     os.remove(pipeline_file_name)
     
