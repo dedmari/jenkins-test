@@ -21,7 +21,7 @@ node {
 
     }
     stage('kfpRunPipeline') {
-      sh "python3.6 kfp_run_pipeline.py"
+      sh "python3.6 kfpTest.py"
     }
     stage('deploy') {
       echo "stage2: deploy model in production..."
