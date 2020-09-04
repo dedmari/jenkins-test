@@ -1,21 +1,24 @@
 node {
   try {
-    stage('checkout') {
+    stage('Code and Flow Tests') {
+      echo "Tests: Unit and integration testing..."
+    }
+    stage('Build Containers') {
       checkout scm
     }
-    stage('prepare') {
+    stage('Push Images') {
       sh "git clean -fdx"
     }
-    stage('branchName') {
-      echo "branch name " + env.BRANCH_NAME
-    }
-    stage('kfp Volume Pipeline Upload') {
+    stage('KFP Run') {
       if (env.BRANCH_NAME.startsWith("training")) {
         sh "python3.6 kfp_vol_pipeline_test.py"
       }
     }
-    stage('deploy') {
-      echo "stage2: deploy model in production..."
+    stage('Trained Model tests') {
+      echo "Tests: Model metrics"
+    }
+    stage('Deploy Model') {
+      echo "Deploy Model: model deoloyed in production..."
     }
   } finally {
     stage('cleanup') {
